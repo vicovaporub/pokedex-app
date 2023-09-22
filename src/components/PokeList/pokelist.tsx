@@ -10,7 +10,7 @@ export const PokeList = () => {
     getList();
   }, []);
 
-  const getList = (offset = 0, limit = 20) => {
+  const getList = (offset = 0, limit = 5) => {
     return fetch(
       `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     )
@@ -40,20 +40,52 @@ export const PokeList = () => {
   return (
     <>
       {pokeData.map((pokemon) => (
-        <li className={`pokemon ${pokemon.primaryType}`} key={pokemon.number}>
-          <span className="number">#{pokemon.number}</span>
-          <span className="name">{pokemon.name}</span>
-          <div className="detail">
-            <ol className="types">
-              {pokemon.types.map((type) => (
-                <li key={type} className={`type ${type}`}>
-                  {type}
-                </li>
-              ))}
-            </ol>
-            <img src={pokemon.sprite}></img>
+        <>
+          <div className="inner-card">
+            <div
+              className={`card-front pokemon ${pokemon.primaryType}`}
+              key={pokemon.number}
+            >
+              <span className="number">#{pokemon.number}</span>
+              <h1 className="name">{pokemon.name}</h1>
+              <div className="detail">
+                <ol className="types">
+                  {pokemon.types.map((type) => (
+                    <li key={type} className={`type ${type}`}>
+                      {type}
+                    </li>
+                  ))}
+                </ol>
+                <img src={pokemon.sprite} alt={pokemon.name}></img>
+              </div>
+            </div>
+            <div className={`card-back pokemon ${pokemon.primaryType}`}>
+              <span className="number">#{pokemon.number}</span>
+              <span className="name">{pokemon.name}</span>
+              <li className="base-stat-list" key={pokemon.height}>
+                <ul className="base-stats">
+                  {pokemon.statHP.toUpperCase()}: {pokemon.hpValue}
+                </ul>
+                <ul className="base-stats">
+                  {pokemon.statAtk}: {pokemon.atkValue}{" "}
+                </ul>
+                <ul className="base-stats">
+                  {pokemon.statDef}: {pokemon.defValue}{" "}
+                </ul>
+                <ul className="base-stats">
+                  {pokemon.statSpa}: {pokemon.spaValue}{" "}
+                </ul>
+                <ul className="base-stats">
+                  {pokemon.statSpd}: {pokemon.spdValue}{" "}
+                </ul>
+                <ul className="base-stats">
+                  {pokemon.statSpe}: {pokemon.speValue}{" "}
+                </ul>
+              </li>
+              <img src={pokemon.backSprite} alt={pokemon.name}></img>
+            </div>
           </div>
-        </li>
+        </>
       ))}
     </>
   );
