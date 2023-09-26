@@ -1,12 +1,10 @@
-
-import { PokeList } from "@/components/PokeList/pokelist";
+import { SearchComponent } from "@/components/SearchComponent/SearchComponent";
 
 export default function Home() {
   return (
    <>
-   <div className='pokemon-container'>
-   <PokeList />
-   </div>
+   <SearchComponent/>
+
    </>
   )
 }
