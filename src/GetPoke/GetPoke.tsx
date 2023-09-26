@@ -3,12 +3,12 @@ import { useEffect, useState } from "react";
 import { Pokemon } from "@/shared/PokemonClass";
 import { PokeList } from "../components/PokeList/PokeList";
 
-export const GetPoke = () => {
+export const GetPoke = ( {offset, limit}: any ) => {
   const [pokeData, setPokeData] = useState<Pokemon[]>([]);
 
   useEffect(() => {
-    getList();
-  }, []);
+    getList(offset, limit);
+  }, [offset, limit]);
 
   const getList = (offset = 0, limit = 151) => {
     return fetch(

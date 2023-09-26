@@ -1,10 +1,10 @@
 import { GetPoke } from "@/GetPoke/GetPoke";
 
-export default function Gen1Page() {
+export default function Gen9Page() {
 
     return (
         <>
-        <GetPoke offset={0} limit={151}/>
+        <GetPoke offset={905} limit={112}/>
         </>
     )
 }
