@@ -1,10 +1,10 @@
-import { GetPoke } from "@/GetPoke/GetPoke";
+import PokeList from "@/components/PokeList/PokeList"
 
-export default function Gen1Page() {
+export default function gen1Page() {
 
     return (
         <>
-        <GetPoke offset={0} limit={151}/>
+        <PokeList offset={0} limit={151}/>
         </>
     )
 }
