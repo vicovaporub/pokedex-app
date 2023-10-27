@@ -1,12 +1,16 @@
-import { Pokemon } from "@/shared/PokemonClass"
+import { PokemonDescription } from "@/shared/PokeDescriptionClass"
 
-export const PokeDetailPage = ( {pokemon}: { pokemon: Pokemon[]} ) => {
+export const PokeDetailPage = ( {pokemon}: { pokemon: PokemonDescription} ) => {
 
-  return (
-    <div>
-        <h1>{pokemon.name}</h1>
-        <h2>{pokemon.number}</h2>
-        <img src={pokemon.sprite}></img>
-    </div>
+
+    return (
+      <>
+    <h1>Pokemon Details</h1>
+      <div>Name: {pokemon.name}</div>
+      <div>Description: {pokemon.description}</div>
+      <div>Color: {pokemon.color}</div>
+      <div>Egg Groups: {pokemon.eggGroups}</div>
+      <div>Number: {pokemon.number}</div>
+    </>
   )
 }

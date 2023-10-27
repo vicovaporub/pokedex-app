@@ -1,28 +1,41 @@
 "use client";
-import { getPoke } from "@/GetPoke/GetPoke";
 import "@/components/SearchComponent/SearchComponent.css";
 import { useState } from "react";
-import { Pokemon } from "@/shared/PokemonClass";
 import { PokeDetailPage } from "../PokeDetailPage/PokeDetailPage";
+import { getPokeDescription } from "@/APIs/GetPokeDescription/GetPokeDescription";
+import { PokemonDescription } from "@/shared/PokeDescriptionClass";
 
 export const SearchComponent = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [foundPoke, setFoundPoke] = useState<Pokemon[]>([]);
+  const [foundPoke, setFoundPoke] = useState<PokemonDescription>();
+  const [isPokeFound, setIsPokeFound] = useState(true)
 
   const handleSearch = (e: any) => {
     e.preventDefault()
     searchPokemon(searchQuery)
-    .then((pokemonData) => setFoundPoke(pokemonData)
-    );
+    .then((pokemonData) => {
+      if(pokemonData) {
+        setFoundPoke(pokemonData)
+        setIsPokeFound(true)
+      } else {
+        setIsPokeFound(false)
+      }
+    })
   };
 
   const searchPokemon = async (param: any) => {
-    const data = await getPoke(0, 151);
-    const foundPoke = data.find(
-      (pokemon) =>  pokemon.name.toLowerCase() === param.toLowerCase()
-    );
-    return foundPoke;
-  };
+    const data = await getPokeDescription(param.toLowerCase())
+
+ 
+    if (typeof param === 'number') {
+      data.number
+    } else if (typeof param === 'string') {
+      data.name
+    }
+    return data
+  }
+ 
+
 
   return (
     <>
@@ -39,12 +52,12 @@ export const SearchComponent = () => {
           ok
         </button>
       </form>
-      {foundPoke ? (
-        <>
-          <PokeDetailPage pokemon={foundPoke}/>
-        </>
+      {!isPokeFound ? (
+        <div>Pokemon not found</div>
       ) : (
-        <div>Pokémon not found</div>
+        foundPoke ? (
+          <PokeDetailPage pokemon={foundPoke} />
+        ) : null
       )}
     </>
   );

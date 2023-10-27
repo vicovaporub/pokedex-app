@@ -1,7 +1,7 @@
 'use client'
 import { Pokemon } from '@/shared/PokemonClass'
 import '@/components/PokeList/PokeList.css'
-import { getPoke } from '@/GetPoke/GetPoke'
+import { getPoke } from '@/APIs/GetPoke/GetPokeList'
 import { useEffect, useState } from 'react'
 
 
