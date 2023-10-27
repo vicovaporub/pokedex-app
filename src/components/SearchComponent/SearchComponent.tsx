@@ -23,16 +23,13 @@ export const SearchComponent = () => {
     })
   };
 
-  const searchPokemon = async (param: any) => {
-    const data = await getPokeDescription(param.toLowerCase())
-
- 
-    if (typeof param === 'number') {
-      data.number
-    } else if (typeof param === 'string') {
-      data.name
+  const searchPokemon = async (param: string) => {
+    try {
+      const data = await getPokeDescription(param.toLowerCase())
+      return data
+    } catch (error) {
+      return null
     }
-    return data
   }
  
 
