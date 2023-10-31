@@ -1,9 +1,9 @@
 import { Pokemon } from "@/shared/PokemonClass";
 
 
-export const getPoke = (offset: number, limit: number) => {
+ const getPoke = (offset: number) => {
 
-  return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`)
+  return fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}`)
     .then((res) => res.json())
     .then((data) => {
       const dataList = data.results;
@@ -18,3 +18,11 @@ export const getPoke = (offset: number, limit: number) => {
     });
 
 };
+
+
+
+export async function fetchPokeList(firstIdToGen: number ) {
+    
+    const pokemons: Pokemon[] =  await getPoke( firstIdToGen )
+    return pokemons
+}
