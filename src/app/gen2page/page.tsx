@@ -4,7 +4,7 @@ export default function gen1Page() {
 
     return (
         <>
-        <PokeList initialToGen={0} limitToGen={151} />
+        <PokeList initialToGen={151} limitToGen={100} />
         </>
     )
 }
