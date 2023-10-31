@@ -5,24 +5,32 @@ import { fetchPokeList } from "@/APIs/GetPoke/GetPokeList";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
-export default function PokeList( { offset }: any) {
+export default function PokeList( { initialToGen, limitToGen }: any) {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([]);
   const [ref, inView] = useInView();
-  const [page, setPage] = useState(offset)
+  const [page, setPage] = useState(initialToGen)
+  const [displayedPokes, setDisplayedPokes] = useState(0)
 
   async function loadMorePokes(page: number) {
-    const pokemons = await fetchPokeList(page);
-    if (pokemons?.length) {
-      setPokemonList((prev) => [...(prev?.length ? prev : []), ...pokemons]);
+
+    const remainingPokes = limitToGen - displayedPokes
+
+    if (remainingPokes > 0) {
+      const pokesToFetch = Math.min(remainingPokes, 20)
+      const pokemons = await fetchPokeList(page, pokesToFetch);
+      if (pokemons?.length) {
+        setPokemonList((prev) => [...(prev?.length ? prev : []), ...pokemons]);
+        setDisplayedPokes((prev) => prev + pokesToFetch)
+      }
     }
   }
 
   useEffect(() => {
-    if (inView) {
+    if (inView && displayedPokes < limitToGen) {
       setPage((prev: number) => prev + 20)
       loadMorePokes(page);
     }
-  }, [inView]);
+  }, [inView, pokemonList]);
 
   return (
     <div className="pokemon-container">
