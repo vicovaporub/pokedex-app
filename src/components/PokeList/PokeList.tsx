@@ -17,11 +17,15 @@ export default function PokeList( { initialToGen, limitToGen }: any) {
 
     if (remainingPokes > 0) {
       const pokesToFetch = Math.min(remainingPokes, 20)
-      const pokemons = await fetchPokeList(page, pokesToFetch);
-      if (pokemons?.length) {
-        setPokemonList((prev) => [...(prev?.length ? prev : []), ...pokemons]);
-        setDisplayedPokes((prev) => prev + pokesToFetch)
-      }
+
+      setTimeout(async () => {
+        const pokemons = await fetchPokeList(page, pokesToFetch);
+        if (pokemons?.length) {
+          setPokemonList((prev) => [...(prev?.length ? prev : []), ...pokemons]);
+          setDisplayedPokes((prev) => prev + pokesToFetch)
+        }
+
+      }, 500)
     }
   }
 
