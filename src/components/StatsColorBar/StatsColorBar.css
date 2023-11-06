@@ -1,0 +1,43 @@
+.stat-bar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.bar {
+  border-radius: 1rem;
+  min-height: 10px; 
+}
+
+.small-red-bar {
+  width: 20px;
+  background-color: red;
+  color: white;
+}
+
+.medium-yellow-bar {
+  width: 40px;
+  background-color: yellow;
+  color: black;
+}
+
+.big-green-bar {
+  width: 60px;
+  background-color: green;
+  color: white;
+}
+
+.stat-value {
+  margin-right: 2px;
+  padding-right: 35px;
+  text-align: right;
+  width: 30px;
+}
+
+.stat-name {
+  margin-right: 2px;
+  padding-right: 2px;
+  text-align: right;
+  width: 150px;
+
+}

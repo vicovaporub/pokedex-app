@@ -3,39 +3,37 @@ import "@/components/SearchComponent/SearchComponent.css";
 import { useState } from "react";
 import { PokeDetailPage } from "../PokeDetailPage/PokeDetailPage";
 import { getPokeDescription } from "@/APIs/GetPokeDescription/GetPokeDescription";
-import { PokemonDescription } from "@/shared/PokeDescriptionClass";
+import { Pokemon } from "@/shared/PokemonClass";
 
 export const SearchComponent = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const [foundPoke, setFoundPoke] = useState<PokemonDescription>();
-  const [isPokeFound, setIsPokeFound] = useState(true)
+  const [searchQuery, setSearchQuery] = useState('');
+  const [foundPoke, setFoundPoke] = useState<Pokemon | null>(null);
+  const [isPokeFound, setIsPokeFound] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSearch = (e: any) => {
-    e.preventDefault()
-    searchPokemon(searchQuery)
-    .then((pokemonData) => {
-      if(pokemonData) {
-        setFoundPoke(pokemonData)
-        setIsPokeFound(true)
+  const handleSearch = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+
+    try {
+      const data = await getPokeDescription(searchQuery.toLowerCase());
+      if (data) {
+        setFoundPoke(data);
+        setIsPokeFound(true);
+        setSearchQuery('');
       } else {
-        setIsPokeFound(false)
+        setIsPokeFound(false);
       }
-    })
+    } catch (error) {
+      console.error('An error occurred:', error);
+      setIsPokeFound(false);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
-  const searchPokemon = async (param: string) => {
-    try {
-      const data = await getPokeDescription(param.toLowerCase())
-      return data
-    } catch (error) {
-      return null
-    }
-  }
- 
-
-
   return (
-    <>
+    <div>
       <form className="search-container" onSubmit={handleSearch}>
         <input
           type="text"
@@ -44,18 +42,21 @@ export const SearchComponent = () => {
           id="search"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-        ></input>
-        <button type="submit" className="search-button">
-          ok
+        />
+        <button type="submit" className="search-button" disabled={isLoading}>
+          {isLoading ? 'Searching...' : 'OK'}
         </button>
       </form>
       {!isPokeFound ? (
         <div>Pokemon not found</div>
       ) : (
         foundPoke ? (
+        <div className="found-poke-layout">
           <PokeDetailPage pokemon={foundPoke} />
+        </div>
         ) : null
       )}
-    </>
+    </div>
   );
 };
+

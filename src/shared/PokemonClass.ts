@@ -21,6 +21,9 @@ export class Pokemon {
     readonly spdValue: number = 0
     readonly speValue: number = 0
     readonly height: number = 0
+    readonly abilites: string[] = ['']
+    readonly moves: string[]
+    readonly weight: number 
 
 
     constructor(pokeObject: GetSinglePokeReturnTypes) {
@@ -42,7 +45,23 @@ export class Pokemon {
       this.spaValue = pokeObject.stats[3].base_stat
       this.spdValue = pokeObject.stats[4].base_stat
       this.speValue = pokeObject.stats[5].base_stat
-      this.height = pokeObject.height
+
+      const heightDividedByTen = pokeObject.height / 10
+      this.height = heightDividedByTen
+
+      const weightDividedByTen = pokeObject.weight / 10
+      this.weight = weightDividedByTen
+
+      this.abilites = pokeObject.abilities.map((abilitySlot) => abilitySlot.ability.name)
+
+      const gen6Moves = pokeObject.moves.filter((moveSlot) => {
+        const isGen6Moves = moveSlot.version_group_details.some((e) => {
+          return e.version_group.name === 'x-y'
+        })
+        return isGen6Moves
+      })
+
+      this.moves = gen6Moves.map((moveSlot) => moveSlot.move.name)
   
     }
 }
