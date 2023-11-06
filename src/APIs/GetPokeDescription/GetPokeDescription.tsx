@@ -1,10 +1,10 @@
-import { PokemonDescription } from "@/shared/PokeDescriptionClass";
+import { Pokemon } from "@/shared/PokemonClass"
 
 
 export const getPokeDescription = (poke: string) => {
-  return fetch(`https://pokeapi.co/api/v2/pokemon-species/${poke}`)
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${poke}`)
     .then((res) => res.json())
-    .then((data) => new PokemonDescription(data))
+    .then((data) => new Pokemon(data))
     .catch((error) => console.log(error))
   }
 
