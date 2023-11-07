@@ -21,9 +21,11 @@ export class Pokemon {
     readonly spdValue: number = 0
     readonly speValue: number = 0
     readonly height: number = 0
-    readonly abilites: string[] = ['']
+    readonly abilities: string[] = ['']
+    readonly hiddenAbility: string | null
     readonly moves: string[]
-    readonly weight: number 
+    readonly weight: number
+    readonly spriteForSearch: string = 'POKE'
 
 
     constructor(pokeObject: GetSinglePokeReturnTypes) {
@@ -32,6 +34,7 @@ export class Pokemon {
       this.primaryType = pokeObject.types[0].type.name
       this.types = pokeObject.types.map((typeSlot) => typeSlot.type.name)
       this.sprite = pokeObject.sprites.front_default
+      this.spriteForSearch = pokeObject.sprites.other["official-artwork"].front_default
       this.backSprite = pokeObject.sprites.back_default
       this.statHP = pokeObject.stats[0].stat.name
       this.statAtk = pokeObject.stats[1].stat.name
@@ -45,6 +48,10 @@ export class Pokemon {
       this.spaValue = pokeObject.stats[3].base_stat
       this.spdValue = pokeObject.stats[4].base_stat
       this.speValue = pokeObject.stats[5].base_stat
+      this.abilities = pokeObject.abilities.filter((abilitySlot) => !abilitySlot.is_hidden).map((ability) => ability.ability.name)
+
+      const hiddenAbility = pokeObject.abilities.find((abilitySlot) => abilitySlot.is_hidden)
+      this.hiddenAbility = hiddenAbility ? hiddenAbility.ability.name : null
 
       const heightDividedByTen = pokeObject.height / 10
       this.height = heightDividedByTen
@@ -52,7 +59,6 @@ export class Pokemon {
       const weightDividedByTen = pokeObject.weight / 10
       this.weight = weightDividedByTen
 
-      this.abilites = pokeObject.abilities.map((abilitySlot) => abilitySlot.ability.name)
 
       const gen7Moves = pokeObject.moves.filter((moveSlot) => {
         const isGen7Moves = moveSlot.version_group_details.some((e) => {

@@ -70,7 +70,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  width: 100vh;
+  width: 180vh;
   height: 105vh;
   margin: 0 auto; 
   position: relative;
@@ -94,22 +94,27 @@
 }
 
 .images-container {
-  top: 40px;
+  top: 10px;
   right: 90px;
   display: flex;
   flex-direction: column;
 }
 
 .images-container img {
+  width: 300px;
+  height: 300px;
   margin-top: 20px;
 }
 
 .types-container {
   position: absolute;
-  top: 100px;
-  right: 200px;
+  top: 80px;
 }
 
+.types li {
+  display: flex;
+  margin: 5px;
+}
 
  .type {
   border: 1px solid rgba(58, 52, 52, 0.25);
@@ -117,12 +122,13 @@
   filter: brightness(1.1);
   text-align: center;
   text-transform: capitalize;
-  padding: 10px;
-  margin: 10px;
+  padding: 7px;
+  margin: 7px;
   font-weight: 600;
   list-style: none;
   font-size: .7rem;
 }
+
 .moves-title {
   position: absolute;
   top: 360px
@@ -131,10 +137,12 @@
   position: absolute;
   top: 390px;
   bottom: 1px;
+  height: fit-content;
   max-height: 280px;
   overflow-y: auto;
   padding: 10px;
-  width: 500px;
+  width: 90%;
+  box-shadow: 0 0 .5px .5px rgba(50, 50, 50, 0.25);
 }
 
 .moves ul {
@@ -151,14 +159,9 @@
   border-radius: 5px;
   padding: 5px 10px;
   display: inline-block;
-  background-color: white;
+  background-color: #f0f0f0
 }
 
-.moves ul li:hover {
-  background-color: #0074d9;
-  color: white;
-  cursor: pointer;
-}
 
 .found-poke-layout {
   display: flex;
@@ -166,3 +169,42 @@
   align-items: center;
   height: 100vh;
 }
+
+.abilities-container {
+  top: 140px;
+  position: absolute;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.abilities {
+  text-transform: capitalize;
+  border-radius: 1rem;
+  padding: 10px;
+}
+
+h1 {
+  font-size: 16px;
+}
+
+.ability-list {
+  list-style: none;
+  padding: 0;
+}
+
+.ability, .hidden-ability {
+  margin: 5px;
+  font-weight: bold;
+}
+
+.hidden-ability {
+font-style: italic;
+font-size: 13px;
+}
+
+.detail-container {
+  top: 280px;
+  position: absolute;
+}
+
+
