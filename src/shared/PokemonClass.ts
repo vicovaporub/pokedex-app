@@ -54,14 +54,14 @@ export class Pokemon {
 
       this.abilites = pokeObject.abilities.map((abilitySlot) => abilitySlot.ability.name)
 
-      const gen6Moves = pokeObject.moves.filter((moveSlot) => {
-        const isGen6Moves = moveSlot.version_group_details.some((e) => {
-          return e.version_group.name === 'x-y'
+      const gen7Moves = pokeObject.moves.filter((moveSlot) => {
+        const isGen7Moves = moveSlot.version_group_details.some((e) => {
+          return e.version_group.name === 'ultra-sun-ultra-moon'
         })
-        return isGen6Moves
+        return isGen7Moves
       })
 
-      this.moves = gen6Moves.map((moveSlot) => moveSlot.move.name)
+      this.moves = gen7Moves.map((moveSlot) => moveSlot.move.name)
   
     }
 }

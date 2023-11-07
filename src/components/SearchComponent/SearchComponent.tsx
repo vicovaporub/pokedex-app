@@ -1,5 +1,6 @@
 "use client";
 import "@/components/SearchComponent/SearchComponent.css";
+import "@/components/PokeDetailPage/PokeDetailPage.css"
 import { useState } from "react";
 import { PokeDetailPage } from "../PokeDetailPage/PokeDetailPage";
 import { getPokeDescription } from "@/APIs/GetPokeDescription/GetPokeDescription";
@@ -31,6 +32,7 @@ export const SearchComponent = () => {
       setIsLoading(false);
     }
   };
+
 
   return (
     <div>

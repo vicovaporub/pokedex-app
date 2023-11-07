@@ -2,6 +2,7 @@
   display: flex;
   align-items: center;
   margin-bottom: 8px;
+  width: auto;
 }
 
 .bar {
@@ -9,22 +10,40 @@
   min-height: 10px; 
 }
 
-.small-red-bar {
+.red-bar {
   width: 20px;
-  background-color: red;
+  background-color: #F34444;
   color: white;
+  border: 1px solid rgb(104, 96, 96);
 }
 
-.medium-yellow-bar {
-  width: 40px;
-  background-color: yellow;
-  color: black;
-}
-
-.big-green-bar {
+.orange-bar {
   width: 60px;
-  background-color: green;
+  background-color: #FF7F0F;
   color: white;
+  border: 1px solid rgb(104, 96, 96);
+}
+
+.yellow-bar {
+  width: 90px;
+  background-color: #FFDD57;
+  color: black;
+  border: 1px solid rgb(104, 96, 96);
+}
+
+.green-bar {
+  width: 120px;
+  background-color: #A0E515;
+  color: white;
+  border: 1px solid rgb(104, 96, 96);
+}
+
+.blue-bar {
+  width: 170px;
+  background-color: #00C2B8;
+  color: white;
+  border: 1px solid rgb(104, 96, 96);
+
 }
 
 .stat-value {
