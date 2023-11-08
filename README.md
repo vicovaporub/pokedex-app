@@ -19,15 +19,15 @@ Built with Next.js, the project allows users to search for specific Pokémon by 
 
    ```bash
    git clone https://github.com/vicovaporub/pokedex-app
-   cd pokedex-app```
+   cd pokedex-app
 
 2. Install Next.js:
     ```bash
-    npm install ```
+    npm install 
 
 3. Start the server:
     ```bash
-    npm run dev```
+    npm run dev
     (Open the browser and access the application at `http://localhost:3000`)
 
 ## Usage
