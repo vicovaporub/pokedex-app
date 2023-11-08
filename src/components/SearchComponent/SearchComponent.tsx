@@ -39,7 +39,7 @@ export const SearchComponent = () => {
       <form className="search-container" onSubmit={handleSearch}>
         <input
           type="text"
-          placeholder="Pokemon name"
+          placeholder="Search a Pokemon"
           className="search-input"
           id="search"
           value={searchQuery}
