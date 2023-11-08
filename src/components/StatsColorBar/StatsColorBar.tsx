@@ -1,17 +1,20 @@
 import "@/components/StatsColorBar/StatsColorBar.css"
 
-// VERMELHO - 20, LARANJA - 49, AMARELO - 70, VERDE - 100, AZUL CLARO 125+ 
     const determineStatBarStyle = (statValue: number) => {
         if (statValue < 20) {
-          return 'red-bar';
-        } else if (statValue >= 20 && statValue < 50) {
-          return 'orange-bar';
-        } else if (statValue >= 50 && statValue < 85) {
-          return 'yellow-bar';
-        } else if (statValue >= 85 && statValue < 110) {
-          return 'green-bar'
+          return 'bar-20';
+        } else if (statValue >= 20 && statValue < 40) {
+          return 'bar-40';
+        } else if (statValue >= 40 && statValue < 60) {
+          return 'bar-60';
+        } else if (statValue >= 60 && statValue < 80) {
+          return 'bar-80'
+        } else if (statValue >= 80 && statValue < 100) {
+          return 'bar-100'
+        } else if (statValue >= 100 && statValue <= 125) {
+          return 'bar-125'
         } else {
-          return 'blue-bar'
+          return 'bar-max'
         }
       };
 
@@ -20,7 +23,7 @@ import "@/components/StatsColorBar/StatsColorBar.css"
       
         return (
           <div className="stat-bar">
-            <span className="stat-name">{statName}: </span>
+            <span className="stat-name"><strong>{statName}:</strong> </span>
             <span className="stat-value">{statValue}</span>
             <div className={`bar ${statBarStyle}`}></div>
           </div>
