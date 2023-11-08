@@ -52,6 +52,16 @@
   .steel {
     background-color: #908e9e;
   }
+
+
+
+  .disclaimer {
+    color: red;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
   
   .base-stat-list {
     font-size: small;
@@ -67,6 +77,7 @@
 }
 
   .pokemon-container {
+    background-color: #e7e6e6;
     display: grid;
     place-items: center;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
