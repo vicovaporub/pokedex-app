@@ -24,9 +24,24 @@ body {
   background-color: #dfdfdf;
 }
 
+.home-disclaimer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.home-disclaimer h1 {
+  font-size: 1rem;
+  margin: 0;
+}
+
 .search-containter {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
+
+

@@ -42,6 +42,9 @@ export default function PokeList( { initialToGen, limitToGen }: any) {
   return (
     <>
     <div className="disclaimer">Warning: The API does not have all information for<br /> later generations (8, 9), some assets could be broken</div>
+      <div className="how-to-list"><strong>
+      Mouse over a card to flip it and see the base stats of the pokemon</strong>
+      </div>
     <div className="pokemon-container">
       {pokemonList?.map((pokemon: Pokemon) => {
         return (
