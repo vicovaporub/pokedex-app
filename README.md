@@ -6,7 +6,7 @@ This Pokédex project aims to display the coding skills and proficiency with web
 
 Built with Next.js, the project allows users to search for specific Pokémon by name or number and provides comprehensive details about each Pokémon's attributes, abilities, and movesets. Additionally, it offers generation-specific Pokémon card displays.
 
-You can access the project in this Vercel link (Vico's Pokedex)[https://pokedex-app-one-bice.vercel.app]
+You can access the project in this Vercel link [Vico's Pokedex](https://pokedex-app-one-bice.vercel.app)
 
 
 ## Table of Contents
