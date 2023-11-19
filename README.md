@@ -23,7 +23,7 @@ You can access the project in this Vercel link [Vico's Pokedex](https://pokedex-
    git clone https://github.com/vicovaporub/pokedex-app
    cd pokedex-app
 
-2. Install Next.js:
+2. Install dependencies:
     ```bash
     npm install 
 
