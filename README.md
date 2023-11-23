@@ -20,7 +20,7 @@ You can access the project in this Vercel link [Vico's Pokedex](https://pokedex-
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/vicovaporub/pokedex-app
+   git clone https://github.com/vicovaporub/pokedex-app.git
    cd pokedex-app
 
 2. Install dependencies:
