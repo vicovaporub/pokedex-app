@@ -5,7 +5,12 @@ import { fetchPokeList } from "@/APIs/GetPoke/GetPokeList"
 import { useEffect, useState } from "react"
 import { useInView } from "react-intersection-observer"
 
-export default function PokeList( { initialToGen, limitToGen }: any) {
+interface PokeListProps {
+  initialToGen: number,
+  limitToGen: number
+}
+
+export default function PokeList( { initialToGen, limitToGen }: PokeListProps) {
   const [pokemonList, setPokemonList] = useState<Pokemon[]>([])
   const [ref, inView] = useInView()
   const [page, setPage] = useState(initialToGen)
@@ -37,7 +42,7 @@ export default function PokeList( { initialToGen, limitToGen }: any) {
     } else if ( displayedPokes >= limitToGen) {
       setShowSpinner(false)
     }
-  }, [inView, pokemonList]);
+  }, [inView, displayedPokes, pokemonList]);
 
   return (
     <>
