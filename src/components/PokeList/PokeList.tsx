@@ -31,7 +31,7 @@ export default function PokeList( { initialToGen, limitToGen }: PokeListProps) {
           setDisplayedPokes((prev) => prev + pokesToFetch)
         }
 
-      }, 500)
+      })
     }
   }
 
